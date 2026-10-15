@@ -55,7 +55,11 @@ export default function About({ profile, experiences }: AboutProps) {
             </dl>
 
             <ul className="mt-8 grid gap-3">
-              {['组件与状态边界设计', '首屏性能与包体积控制', '把重复劳动交给脚本'].map((item) => (
+              {[
+                '组件拆分与状态边界设计',
+                '首屏性能与包体积控制',
+                '把重复劳动交给脚本与自动化',
+              ].map((item) => (
                 <li key={item} className="flex items-start gap-2.5 text-sm text-muted">
                   <IconSparkle className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
                   {item}

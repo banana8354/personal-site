@@ -49,13 +49,63 @@ $env:VITE_BASE = "/personal-site/"; npm run build -- --outDir docs --emptyOutDir
 
 ## 二、备选方式：GitHub Actions 自动部署
 
-仓库已包含 `.github/workflows/deploy.yml`（推送到 `main` 时自动构建并发布）。使用它需要：
+本次部署使用的是上面的分支发布方式，原因是：推送 `.github/workflows/` 下的工作流文件需要
+Personal Access Token 具备 `workflow` scope，而本次使用的令牌只有 `Contents: write`，
+GitHub 直接拒绝了该文件的推送（`refusing to allow a Personal Access Token to create or update
+workflow ... without workflow scope`）。因此改为「本地构建 → 提交 `docs/` → 分支发布」，
+效果与 Actions 部署完全一致。
 
-1. 仓库 **Settings → Pages → Build and deployment → Source** 选择 **GitHub Actions**；
-2. push 到 `main` 触发（或在 Actions 页面手动 Run workflow）。
+若希望改用 Actions 自动部署，工作流内容如下（保存为 `.github/workflows/deploy.yml`）：
 
-> 注意：工作流文件需要 Personal Access Token 具备 `workflow` scope 才能推送。
-> 若令牌没有该 scope，请改用上面的分支发布方式，或通过 GitHub 网页直接编辑该文件。
+```yaml
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Build
+        env:
+          VITE_BASE: /${{ github.event.repository.name }}/
+        run: npm run build
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/deploy-pages@v4
+        id: deployment
+```
+
+启用步骤：仓库 **Settings → Pages → Source** 选择 **GitHub Actions**，
+然后 push 到 `main`（或在 Actions 页面手动 Run workflow）。
 
 ## 三、其他静态托管平台
 

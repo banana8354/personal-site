@@ -69,20 +69,20 @@ export const seedSettings: SiteSettings = {
 }
 
 export const seedProfile: Profile = {
-  name: '陈星宇',
-  title: '前端开发工程师 / React & TypeScript',
-  tagline: '把复杂的交互做成顺手的产品，把深夜的想法写成能跑起来的代码。',
+  name: '韩雄霖',
+  title: '计算机科学与技术 · 大四学生 / 前端与全栈开发方向',
+  tagline: '把课堂上学到的原理，做成能跑起来、能给别人用的产品。',
   avatar: artwork(
     { from: '#0ea5e9', to: '#7c3aed' },
-    { width: 320, height: 320, label: '星', radius: 160 },
+    { width: 320, height: 320, label: '韩', radius: 160 },
   ),
   bio: [
-    '你好，我是陈星宇，一名前端开发工程师。日常在 React + TypeScript 的技术栈里做产品，关注组件设计、状态边界与交互细节，也喜欢把工程化的事情做扎实（构建、类型、可维护性）。',
-    '我相信好的前端不只是"还原设计稿"，而是替用户省下每一次多余的点击和等待。所以我习惯先想清楚数据怎么流、状态放在哪，再动手写界面。',
-    '业余时间会写一些开源小工具，把重复劳动交给脚本；也会把踩过的坑整理成文章，希望下一个遇到同样问题的人少绕一段路。',
+    '你好，我是韩雄霖，大连海事大学计算机科学与技术专业 2 班的大四学生，目前在前端与全栈开发方向做项目实践，正在准备 2026 届校园招聘。',
+    '我的学习路径是「先跑通、再打磨」：用一个完整的小项目把知识点串起来，然后回头补工程化、性能与可维护性。React + TypeScript 是我最熟悉的技术栈，也写过 Node.js 服务端与 Chrome 扩展。',
+    '除此之外我会把踩过的坑整理成技术文章，做项目时习惯用 Git 管理每一次改动，也喜欢把重复劳动交给脚本，让流程本身更可靠。',
   ],
   email: '3081663228@qq.com',
-  location: '中国 · 杭州',
+  location: '辽宁 · 大连',
   resumeUrl: '#',
   socials: [
     { label: 'GitHub', url: 'https://github.com/banana8354', icon: 'github' },
@@ -94,30 +94,30 @@ export const seedProfile: Profile = {
 export const seedExperiences: Experience[] = [
   {
     id: 'exp-1',
-    period: '2023.07 – 至今',
-    org: '某互联网科技有限公司',
-    role: '前端开发工程师',
+    period: '2022.09 – 2026.06',
+    org: '大连海事大学 · 计算机科学与技术专业 2 班',
+    role: '本科在读（大四）',
     description:
-      '负责企业中台前端架构与核心业务模块开发：搭建基于 Vite + React + TypeScript 的组件库与脚手架，推动类型覆盖率与构建耗时优化。',
-    kind: 'work',
+      '系统学习数据结构、算法、计算机网络、数据库、操作系统与软件工程；GPA 位于专业前列，多次参与校级科技竞赛与课程项目开发。',
+    kind: 'education',
   },
   {
     id: 'exp-2',
-    period: '2022.03 – 2023.06',
-    org: '某数字创意工作室',
-    role: '前端开发（实习 → 全职）',
+    period: '2026.03 – 至今',
+    org: '课程项目与个人项目实践',
+    role: '前端 / 全栈开发',
     description:
-      '独立完成 6 个品牌官网与活动页的开发与上线，负责响应式适配、动效实现与性能优化，逐步建立起前端的工程规范。',
+      '独立完成「图提取 ImageGrab」浏览器扩展与「星空个人网站」，负责需求文档、技术方案、编码实现与部署上线全流程，技术栈为 React + TypeScript + Vite。',
     kind: 'work',
   },
   {
     id: 'exp-3',
-    period: '2019.09 – 2023.06',
-    org: '某大学 · 计算机科学与技术',
-    role: '本科',
+    period: '2026.07 – 2026.09',
+    org: '暑期项目实训（Web 前端方向）',
+    role: '前端开发实习生',
     description:
-      '主修方向为软件工程与 Web 技术；毕业设计为「可视化数据看板平台」，获校级优秀毕业设计。',
-    kind: 'education',
+      '参与企业官网与管理后台的页面开发，负责响应式适配、组件拆分与接口联调，实习期间完成 10+ 个功能页面。',
+    kind: 'work',
   },
 ]
 

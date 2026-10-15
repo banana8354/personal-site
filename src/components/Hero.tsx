@@ -14,16 +14,23 @@ interface HeroProps {
   settings: SiteSettings
   projectCount: number
   postCount: number
+  skillCount: number
 }
 
-const STATS = (projectCount: number, postCount: number) => [
+const STATS = (projectCount: number, postCount: number, skillCount: number) => [
   { label: '项目', value: projectCount },
   { label: '文章', value: postCount },
-  { label: '年经验', value: 3 },
+  { label: '技能', value: skillCount },
 ]
 
 /** 首屏 Hero：头像、姓名、头衔、一句话介绍与 CTA（FR-01 / FR-02） */
-export default function Hero({ profile, settings, projectCount, postCount }: HeroProps) {
+export default function Hero({
+  profile,
+  settings,
+  projectCount,
+  postCount,
+  skillCount,
+}: HeroProps) {
   function scrollTo(id: string) {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
@@ -75,7 +82,7 @@ export default function Hero({ profile, settings, projectCount, postCount }: Her
           </div>
 
           <dl className="mt-10 flex flex-wrap gap-8">
-            {STATS(projectCount, postCount).map((stat) => (
+            {STATS(projectCount, postCount, skillCount).map((stat) => (
               <div key={stat.label}>
                 <dt className="text-xs tracking-wide text-muted">{stat.label}</dt>
                 <dd className="mt-1 font-mono text-2xl font-semibold text-ink">

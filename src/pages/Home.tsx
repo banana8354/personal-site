@@ -23,6 +23,7 @@ export default function Home() {
         settings={data.settings}
         projectCount={data.projects.length}
         postCount={data.posts.length}
+        skillCount={data.skills.length}
       />
 
       <About profile={data.profile} experiences={data.experiences} />

@@ -14,8 +14,12 @@ export const STORAGE_KEYS = {
   version: 'ps.version',
 } as const
 
-/** 数据结构版本号：破坏性变更时提升并写迁移逻辑 */
-export const SCHEMA_VERSION = '1.0.0'
+/**
+ * 数据结构 / 默认内容版本号。
+ * 提升该值会让下次访问重新写入默认内容（会覆盖旧版本写入的 localStorage 数据），
+ * 用于默认内容更新后让老访客也能看到最新数据。
+ */
+export const SCHEMA_VERSION = '1.1.0'
 
 /** 数据变更事件名：写入后派发，useSiteData 订阅刷新 */
 export const DATA_CHANGED_EVENT = 'ps:data-changed'
