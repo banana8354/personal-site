@@ -12,6 +12,10 @@ dist
 dist-ssr
 *.local
 
+# 本地部署辅助脚本（含令牌读取逻辑，不进入仓库）
+scripts/probe-token.mjs
+scripts/gh.mjs
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
