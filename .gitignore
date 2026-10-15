@@ -15,6 +15,7 @@ dist-ssr
 # 本地部署辅助脚本（含令牌读取逻辑，不进入仓库）
 scripts/probe-token.mjs
 scripts/gh.mjs
+scripts/pages-builds.mjs
 
 # Editor directories and files
 .vscode/*
